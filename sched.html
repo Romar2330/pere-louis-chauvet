@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G10-PLC Class Schedule</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #3b82f6;
+            --accent: #f59e0b;
+            --light: #f3f4f6;
+            --dark: #1f2937;
+            --success: #10b981;
+            --gradient-start: #dbeafe;
+            --gradient-mid: #ede9fe;
+            --gradient-end: #dbeafe;
+        }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #dbeafe, #ede9fe, #dbeafe);
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      padding: 30px 0;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .back-btn {
+      position: absolute;
+      left: 20px;
+      top: 30px;
+      background: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .back-btn:hover {
+      transform: translateX(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    
+    .logo {
+      width: 80px;
+      height: 80px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      box-shadow: 0 8px 20px rgba(12, 83, 36, 0.3);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .logo::after {
+      content: '';
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: translateX(-100%);
+      animation: shine 3s infinite;
+    }
+    
+    @keyframes shine {
+      to {
+        transform: translateX(100%);
+      }
+    }
+    
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    .content-section {
+      background: white;
+      border-radius: 20px;
+      padding: 40px 20px;
+      margin-top: 30px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-out;
+      overflow: hidden;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .schedule-header {
+      text-align: center;
+      padding: 20px 40px;
+      background: linear-gradient(to right, #e6f0e8, #d7e6da);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    
+    .schedule-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .schedule-title::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--accent);
+    }
+    
+    .school-year {
+      font-size: 1.2rem;
+      color: var(--dark);
+      margin-top: 10px;
+      font-style: italic;
+    }
+    
+    .decoration-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(12, 83, 36, 0.05);
+      z-index: 0;
+    }
+    
+    .deco-1 {
+      width: 200px;
+      height: 200px;
+      top: -50px;
+      right: -50px;
+    }
+    
+    .deco-2 {
+      width: 150px;
+      height: 150px;
+      bottom: 100px;
+      left: -50px;
+    }
+    
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .schedule-table th {
+      padding: 15px 10px;
+      text-align: center;
+      font-weight: 600;
+      color: white;
+    }
+    
+    .schedule-table th.time-header {
+      background-color: var(--primary);
+    }
+    
+    .schedule-table th.day-header {
+      background-color: var(--secondary);
+    }
+    
+    .schedule-table td {
+      padding: 15px 10px;
+      text-align: center;
+      border: 1px solid #e0e0e0;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .schedule-table tr:hover td {
+      background-color: #f9f9f9;
+    }
+    
+    .schedule-table .break-row {
+      background-color: var(--accent);
+      color: var(--dark);
+      font-weight: bold;
+      letter-spacing: 4px;
+    }
+    
+    .break-row td {
+      border-color: var(--accent);
+    }
+    
+    .advisor-info {
+      text-align: center;
+      margin: 40px 0 20px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--primary);
+    }
+    
+    .advisor-info .name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    
+    .advisor-info .title {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--secondary);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 40px 0 30px;
+      color: var(--dark);
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+    
+    /* Media Queries */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .schedule-title {
+        font-size: 2rem;
+      }
+      
+      .schedule-table {
+        font-size: 0.85rem;
+      }
+      
+      .schedule-table th, .schedule-table td {
+        padding: 10px 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="#" class="back-btn" id="back-button">
+        <i class="fas fa-arrow-left"></i>
+      </a>
+      <div class="logo">PLC</div>
+      <h1>G10 - Pere Louis Chauvet</h1>
+    </header>
+    
+    <section class="content-section">
+      <div class="schedule-header">
+        <h2 class="schedule-title">Class Schedule</h2>
+        <p class="school-year">S.Y. 2024-2025</p>
+        <div class="decoration-circle deco-1"></div>
+      </div>
+      
+      <div class="decoration-circle deco-2"></div>
+      
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th class="time-header">TIME</th>
+            <th class="day-header">MONDAY</th>
+            <th class="day-header">TUESDAY</th>
+            <th class="day-header">WEDNESDAY</th>
+            <th class="day-header">THURSDAY</th>
+            <th class="day-header">FRIDAY</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>7:45-8:45</td>
+            <td>SCIENCE</td>
+            <td>SCIENCE</td>
+            <td>T.L.E</td>
+            <td>COMPUTER</td>
+            <td>FILIPINO</td>
+          </tr>
+          <tr>
+            <td>8:45-9:45</td>
+            <td>ADV. MATH</td>
+            <td>ADV. MATH</td>
+            <td>FILIPINO</td>
+            <td>CLVE</td>
+            <td>ADV. MATH</td>
+          </tr>
+          <tr class="break-row">
+            <td>9:45-10:15</td>
+            <td>R</td>
+            <td>E</td>
+            <td>C</td>
+            <td>E</td>
+            <td>S</td>
+            <td>S</td>
+          </tr>
+          <tr>
+            <td>10:15-11:15</td>
+            <td>ADV. SCIENCE</td>
+            <td>ADV. SCIENCE</td>
+            <td>ENGLISH</td>
+            <td>SCIENCE</td>
+            <td>ADV. SCIENCE</td>
+          </tr>
+          <tr>
+            <td>11:15-12:15</td>
+            <td>CLVE</td>
+            <td>A.P</td>
+            <td>MAPEH</td>
+            <td>ENGLISH</td>
+            <td>MAPEH</td>
+          </tr>
+          <tr class="break-row">
+            <td>12:15-1:15</td>
+            <td>L</td>
+            <td>U</td>
+            <td>N</td>
+            <td>C</td>
+            <td>H</td>
+          </tr>
+          <tr>
+            <td>1:15-2:15</td>
+            <td>MAPEH</td>
+            <td>MATH</td>
+            <td>SCIENCE</td>
+            <td>MAPEH</td>
+            <td>T.L.E</td>
+          </tr>
+          <tr>
+            <td>2:15-3:15</td>
+            <td>MATH</td>
+            <td>FILIPINO</td>
+            <td>CLVE</td>
+            <td>MATH</td>
+            <td>MATH</td>
+          </tr>
+          <tr>
+            <td>3:15-4:15</td>
+            <td>A.P</td>
+            <td>HOMEROOM/ ACTIVITY</td>
+            <td>COMPUTER</td>
+            <td>A.P</td>
+            <td>ENGLISH</td>
+          </tr>
+          <tr>
+            <td>4:15-5:15</td>
+            <td>ENGLISH</td>
+            <td>HOMEROOM/ ACTIVITY</td>
+            <td>COMPUTER</td>
+            <td>FILIPINO</td>
+            <td>CLVE</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="advisor-info">
+        <p class="name">MRS. MA. CRISTINA P. PARAGGUA</p>
+        <p class="title">Adviser</p>
+      </div>
+    </section>
+  </div>
+  
+  <footer>
+    <p>&copy; 2025 Pere Louis Chauvet - G10 PLC. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Back button functionality
+      document.getElementById('back-button').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.history.back();
+      });
+      
+      // Add scroll reveal animation
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      document.querySelectorAll('.schedule-table, .advisor-info').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        observer.observe(el);
+      });
+      
+      // Add hover effect for table rows
+      const rows = document.querySelectorAll('.schedule-table tbody tr:not(.break-row)');
+      rows.forEach(row => {
+        row.addEventListener('mouseenter', function() {
+          this.style.transform = 'scale(1.01)';
+          this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+        });
+        
+        row.addEventListener('mouseleave', function() {
+          this.style.transform = 'scale(1)';
+          this.style.boxShadow = 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

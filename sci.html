@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pere Louis Chauvet - Science Projects</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #3b82f6;
+            --accent: #f59e0b;
+            --light: #f3f4f6;
+            --dark: #1f2937;
+            --success: #10b981;
+            --gradient-start: #dbeafe;
+            --gradient-mid: #ede9fe;
+            --gradient-end: #dbeafe;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            padding: 30px 0;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 20px;
+            top: 30px;
+            background: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 20px rgba(30, 58, 138, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            to {
+                transform: translateX(100%);
+            }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 40px;
+            font-weight: 400;
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .section-header {
+            text-align: center;
+            padding: 40px 0 20px;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-align: center;
+            color: var(--dark);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px 0 50px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .project-card .caption {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--primary);
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .project-card .description {
+            color: var(--dark);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .project-card .view-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin-top: auto;
+        }
+
+        .project-card .view-btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
+        }
+
+        .tabs-container {
+            margin: 20px 0 40px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab {
+            padding: 12px 25px;
+            background: white;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
+        }
+
+        .tab:hover:not(.active) {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .peta-section {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .peta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .peta-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .peta-content {
+            line-height: 1.8;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0 30px;
+            color: var(--dark);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .gallery-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 3rem;
+            }
+
+            .peta-title {
+                font-size: 2rem;
+            }
+
+            .tab {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="#" class="back-btn" id="back-button">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <div class="logo">PLC</div>
+            <h1>Pere Louis Chauvet</h1>
+            <p class="subtitle">Showcasing innovative science projects and research achievements.</p>
+        </header>
+
+        <div class="tabs-container">
+            <div class="tabs">
+                <div class="tab" data-tab="science-projects">Science Projects</div>
+                <div class="tab active" data-tab="peta">PETA Research</div>
+            </div>
+
+            <!-- SCIENCE PROJECTS TAB -->
+            <div class="tab-content" id="science-projects-tab">
+                <div class="section-header">
+                    <h2 class="section-title">Science Projects</h2>
+                    <p class="section-subtitle">Innovative projects developed by our talented students. Click on any project to view the full documentation in Google Drive.</p>
+                </div>
+
+                <div class="gallery-container">
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="caption">Flow to Power (FTP)</div>
+                        <div class="description">Converts Kinetic Energy to Electricity</div>
+                        <a href="https://docs.google.com/document/d/1oPdmVEdLRXWjCQc2DwCU40b9NkJKqVsN/edit?usp=drive_link&ouid=113859398896760745621&rtpof=true&sd=true" target="_blank" class="view-btn">
+                            <i class="fab fa-google-drive"></i> View in Google Drive
+                        </a>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="caption">Watt Wise</div>
+                        <div class="description">Pioneering Smart Power Strip System for Enhanced Energy Efficiency</div>
+                        <a href="https://docs.google.com/document/d/1E8RJ63DqHZIPgwWsGsN1lZ6Vo6ZOA-ki/edit?usp=drive_link&ouid=113859398896760745621&rtpof=true&sd=true" target="_blank" class="view-btn">
+                            <i class="fab fa-google-drive"></i> View in Google Drive
+                        </a>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="caption">POWER WALL</div>
+                        <div class="description">Solar Powered Generator</div>
+                        <a href="https://docs.google.com/document/d/1cePnGfNuHurEOIlxqPQeNmWgnopLsHiC/edit?usp=drive_link&ouid=113859398896760745621&rtpof=true&sd=true" target="_blank" class="view-btn">
+                            <i class="fab fa-google-drive"></i> View in Google Drive
+                        </a>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="caption">Project Leevs</div>
+                        <div class="description">Leaf Evaluation and Early Visual Surveillance</div>
+                        <a href="https://drive.google.com/file/d/1HExKcgeK9JcFBXFNgTZQHv9BAX2D8NLd/view?usp=drive_link" target="_blank" class="view-btn">
+                            <i class="fab fa-google-drive"></i> View in Google Drive
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PETA RESEARCH TAB -->
+            <div class="tab-content active" id="peta-tab">
+                <div class="peta-section">
+                    <h2 class="peta-title">PETA in Science</h2>
+                    <div class="peta-content">
+                        <p>The completion of PLC's science PETA (research) was a remarkable achievement, accomplished amidst a whirlwind of challenges that would have daunted even the most seasoned researchers. Despite the demanding academic schedule and personal commitments each member faced, they approached the project with the same tenacity and collaborative spirit that defined their journey.</p>
+                        
+                        <p>Late nights became the norm as they diligently gathered data, analyzed results, and synthesized their findings into a coherent presentation. Alongside the stresses of academic pressure, the team encountered unexpected hurdles, such as limited access to research materials and occasional technical glitches. Yet, these obstacles only strengthened their resolve.</p>
+                        
+                        <p>By leaning on each other for support, they discovered innovative solutions and learned valuable lessons about resourcefulness and adaptability. The culmination of their hard work was not just a completed project, but a testament to their resilience and the unyielding belief that, together, they could overcome any adversity.</p>
+                        
+                        <p>This experience was a profound reminder of the power of perseverance and the incredible achievements that can be realized through collective effort and unwavering dedication.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Pere Louis Chauvet. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Tabs Functionality
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const target = tab.dataset.tab;
+                    
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Show corresponding content
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === `${target}-tab`) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+
+            // Make entire card clickable to open Google Drive link
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            projectCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Only trigger if the click was not on the view button itself
+                    if (!e.target.closest('.view-btn')) {
+                        const viewBtn = this.querySelector('.view-btn');
+                        if (viewBtn) {
+                            window.open(viewBtn.href, '_blank');
+                        }
+                    }
+                });
+            });
+
+            // Back button
+            document.getElementById('back-button').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.history.back();
+            });
+        });
+    </script>
+</body>
+</html>

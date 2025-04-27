@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pere Louis Chauvet</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #3b82f6;
+      --accent: #f59e0b;
+      --light: #f3f4f6;
+      --dark: #1f2937;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #dbeafe, #ede9fe, #dbeafe);
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      padding: 40px 0;
+      text-align: center;
+      position: relative;
+    }
+    
+    .logo {
+      width: 100px;
+      height: 100px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin: 0 auto 20px;
+      box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .logo::after {
+      content: '';
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: translateX(-100%);
+      animation: shine 3s infinite;
+    }
+    
+    @keyframes shine {
+      to {
+        transform: translateX(100%);
+      }
+    }
+    
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+      display: inline-block;
+    }
+    
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 50px;
+      font-weight: 300;
+      opacity: 0.8;
+    }
+    
+    .buttons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .btn {
+      background: white;
+      color: var(--dark);
+      border: none;
+      border-radius: 16px;
+      padding: 25px 30px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-decoration: none;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+      height: 200px;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--secondary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    
+    .btn:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .btn:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .btn:hover .btn-icon {
+      transform: scale(1.2) translateY(-10px);
+      color: var(--accent);
+    }
+    
+    .btn:hover .btn-title {
+      transform: translateY(-5px);
+      color: var(--primary);
+    }
+    
+    .btn:hover .btn-desc {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .btn-icon {
+      font-size: 2.5rem;
+      color: var(--secondary);
+      transition: all 0.4s ease;
+    }
+    
+    .btn-title {
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-desc {
+      font-size: 0.85rem;
+      opacity: 0.6;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 50px 0 30px;
+      color: var(--dark);
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+    
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float 15s infinite ease-in-out;
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) translateX(0);
+      }
+      25% {
+        transform: translateY(-30px) translateX(15px);
+      }
+      50% {
+        transform: translateY(-15px) translateX(-15px);
+      }
+      75% {
+        transform: translateY(30px) translateX(10px);
+      }
+    }
+    
+    /* Media Queries */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .buttons-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+      }
+      
+      .btn {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="particles" id="particles"></div>
+
+  <div class="container">
+    <header>
+      <div class="logo">PLC</div>
+      <h1>Pere Louis Chauvet</h1>
+      <p class="subtitle">Excellence Through Education and Community</p>
+    </header>
+    
+    <div class="buttons-grid">
+      <a href="about.html" class="btn" id="about-btn">
+        <i class="fas fa-question-circle btn-icon"></i>
+        <span class="btn-title">About PLC</span>
+        <p class="btn-desc">Learn about our vision, mission, and history</p>
+      </a>
+      
+      <a href="attendance.html" class="btn" id="attendance-btn">
+        <i class="fas fa-user-check btn-icon"></i>
+        <span class="btn-title">Class Attendance</span>
+        <p class="btn-desc">Check your attendance records and status</p>
+      </a>
+      
+      <a href="memories.html" class="btn" id="memories-btn">
+        <i class="fas fa-camera-retro btn-icon"></i>
+        <span class="btn-title">Memories</span>
+        <p class="btn-desc">Explore photo galleries of school events</p>
+      </a>
+      
+      <a href="mapeh.html" class="btn" id="cheer-btn">
+        <i class="fas fa-dumbbell btn-icon"></i>
+        <span class="btn-title">MAPEH Cheerdance</span>
+        <p class="btn-desc">View performances and competition schedules</p>
+      </a>
+      
+      <a href="sci.html" class="btn" id="science-btn">
+        <i class="fas fa-flask btn-icon"></i>
+        <span class="btn-title">PETA in Science</span>
+        <p class="btn-desc">Discover our innovative science projects</p>
+      </a>
+      
+      <a href="sched.html" class="btn" id="calendar-btn">
+        <i class="fas fa-calendar-alt btn-icon"></i>
+        <span class="btn-title">Class Schedule</span>
+        <p class="btn-desc">Subject Weekly Schedule</p>
+      </a>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2025 Pere Louis Chauvet. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Create floating particles background
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const colors = ['#1e3a8a', '#3b82f6', '#f59e0b', '#f3f4f6'];
+      
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random properties
+        const size = Math.random() * 40 + 10;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.background = color;
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // Add button click animations
+    function setupButtonEffects() {
+      const buttons = document.querySelectorAll('.btn');
+      
+      buttons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          // Create ripple effect
+          const ripple = document.createElement('span');
+          ripple.style.position = 'absolute';
+          ripple.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+          ripple.style.borderRadius = '50%';
+          ripple.style.width = '100px';
+          ripple.style.height = '100px';
+          ripple.style.left = `${e.clientX - this.getBoundingClientRect().left - 50}px`;
+          ripple.style.top = `${e.clientY - this.getBoundingClientRect().top - 50}px`;
+          ripple.style.transform = 'scale(0)';
+          ripple.style.animation = 'ripple 0.6s linear';
+          
+          this.appendChild(ripple);
+          
+          setTimeout(() => {
+            ripple.remove();
+          }, 600);
+        });
+      });
+    }
+    
+    // Initialize interactive elements
+    document.addEventListener('DOMContentLoaded', () => {
+      createParticles();
+      setupButtonEffects();
+      
+      // Add a little surprise when clicking the logo
+      document.querySelector('.logo').addEventListener('click', function() {
+        this.style.transform = 'rotate(360deg)';
+        setTimeout(() => {
+          this.style.transform = 'none';
+        }, 1000);
+      });
+    });
+    
+    // Add ripple animation
+    document.head.insertAdjacentHTML('beforeend', `
+      <style>
+        @keyframes ripple {
+          to {
+            transform: scale(4);
+            opacity: 0;
+          }
+        }
+      </style>
+    `);
+  </script>
+</body>
+</html>
