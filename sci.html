@@ -174,7 +174,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            padding: 30px 20px;
+            padding: 0 0 20px;
             text-align: center;
         }
 
@@ -183,9 +183,10 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
-        .project-icon {
-            font-size: 3rem;
-            color: var(--primary);
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
             margin-bottom: 20px;
         }
 
@@ -196,6 +197,7 @@
             color: var(--primary);
             position: relative;
             margin-bottom: 15px;
+            padding: 0 20px;
         }
 
         .project-card .description {
@@ -203,6 +205,7 @@
             font-size: 0.95rem;
             margin-bottom: 25px;
             flex-grow: 1;
+            padding: 0 20px;
         }
 
         .project-card .view-btn {
@@ -219,7 +222,8 @@
             gap: 10px;
             transition: all 0.3s ease;
             text-decoration: none;
-            margin-top: auto;
+            margin: auto auto 0;
+            width: 80%;
         }
 
         .project-card .view-btn:hover {
@@ -370,9 +374,7 @@
 
                 <div class="gallery-container">
                     <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
+                        <img src="images/FLOW TO POWER.jpg" alt="Flow to Power Project" class="project-image">
                         <div class="caption">Flow to Power (FTP)</div>
                         <div class="description">Converts Kinetic Energy to Electricity</div>
                         <a href="https://docs.google.com/document/d/1oPdmVEdLRXWjCQc2DwCU40b9NkJKqVsN/edit?usp=drive_link&ouid=113859398896760745621&rtpof=true&sd=true" target="_blank" class="view-btn">
@@ -381,9 +383,7 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
+                        <img src="images/WATT WISE.jpeg" alt="Watt Wise Project" class="project-image">
                         <div class="caption">Watt Wise</div>
                         <div class="description">Pioneering Smart Power Strip System for Enhanced Energy Efficiency</div>
                         <a href="https://docs.google.com/document/d/1E8RJ63DqHZIPgwWsGsN1lZ6Vo6ZOA-ki/edit?usp=drive_link&ouid=113859398896760745621&rtpof=true&sd=true" target="_blank" class="view-btn">
@@ -392,9 +392,7 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
+                        <img src="images/POWER WALL.jpg" alt="Power Wall Project" class="project-image">
                         <div class="caption">POWER WALL</div>
                         <div class="description">Solar Powered Generator</div>
                         <a href="https://docs.google.com/document/d/1cePnGfNuHurEOIlxqPQeNmWgnopLsHiC/edit?usp=drive_link&ouid=113859398896760745621&rtpof=true&sd=true" target="_blank" class="view-btn">
@@ -403,9 +401,7 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
+                        <img src="images/PROJECT LEEVS.jpg" alt="Project Leevs" class="project-image">
                         <div class="caption">Project Leevs</div>
                         <div class="description">Leaf Evaluation and Early Visual Surveillance</div>
                         <a href="https://drive.google.com/file/d/1HExKcgeK9JcFBXFNgTZQHv9BAX2D8NLd/view?usp=drive_link" target="_blank" class="view-btn">
